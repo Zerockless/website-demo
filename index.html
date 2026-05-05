@@ -113,7 +113,69 @@
     .footer-logo { font-family: 'Playfair Display', serif; color: var(--gold-light); font-size: 1.2rem; margin-bottom: 0.5rem; }
     footer p { color: rgba(245,233,200,0.3); font-size: 0.78rem; font-weight: 300; }
     .footer-divider { margin: 1rem auto; width: 60px; height: 1px; background: rgba(201,168,76,0.3); }
-    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .accordion-card { cursor: default; }
+    .accordion-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.8rem 2rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .accordion-header:hover { background: rgba(201,168,76,0.06); }
+    .accordion-arrow {
+      font-size: 1rem;
+      color: var(--gold);
+      transition: transform 0.35s ease;
+    }
+    .accordion-arrow.open { transform: rotate(180deg); }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.3s ease;
+      padding: 0 2rem;
+    }
+    .accordion-body.open {
+      max-height: 2000px;
+      padding: 0 2rem 2rem;
+    }
+    .toptan-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 1rem;
+    }
+    .toptan-gallery img {
+      width: 100%; aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 2px solid #EDE0C4;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .toptan-gallery img:hover {
+      transform: scale(1.04);
+      border-color: var(--gold);
+      box-shadow: 0 8px 24px rgba(201,168,76,0.25);
+    }
+    /* Modal */
+    .img-modal {
+      display: none;
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.88);
+      align-items: center; justify-content: center;
+    }
+    .img-modal.active { display: flex; }
+    .img-modal img {
+      max-width: 90vw; max-height: 88vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .img-modal-close {
+      position: absolute; top: 20px; right: 28px;
+      color: white; font-size: 2.5rem;
+      cursor: pointer; line-height: 1;
+      transition: color 0.2s;
+    }
+    .img-modal-close:hover { color: var(--gold-light); }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 768px) {
       .hero-content { grid-template-columns: 1fr; gap: 2rem; padding: 0 1.5rem; }
@@ -194,6 +256,34 @@
       <div class="product-card fade-in"><span class="product-emoji">🧴</span><h3>Zamzam & Koku</h3><p>Zamzam suyu kapları, Mekke parfümleri ve misvak gibi özel dini ürünler.</p></div>
       <div class="product-card fade-in"><span class="product-emoji">🎁</span><h3>Hac Hediyeleri</h3><p>Hac dönüşü sevdiklerinize götürebileceğiniz özel hediye setleri ve hatıra ürünleri.</p></div>
       <div class="product-card fade-in"><span class="product-emoji">🧳</span><h3>Hac Çantaları</h3><p>Bel çantaları, sırt çantaları ve hacı özel çantalar. Dayanıklı ve pratik tasarımlar.</p></div>
+      <div class="product-card fade-in accordion-card" style="grid-column: 1 / -1; padding: 0; overflow: hidden;">
+        <div class="accordion-header" onclick="toggleAccordion()">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <span class="product-emoji" style="margin:0;">📦</span>
+            <div style="text-align:left;">
+              <h3 style="margin:0;">Toptan Satış</h3>
+              <p style="font-size:0.82rem; color:var(--text-light); margin:0;">Tüm ürünlerimizde toptan imkânı — görmek için tıkla</p>
+            </div>
+          </div>
+          <span class="accordion-arrow" id="accordionArrow">▼</span>
+        </div>
+        <div class="accordion-body" id="accordionBody">
+          <div class="toptan-gallery">
+            <img src="ToptanSatisImage/ToptanSatis1.jpeg" alt="Toptan Ürün 1" onclick="openModal(this.src)">
+            <img src="ToptanSatisImage/ToptanSatis2.jpeg" alt="Toptan Ürün 2" onclick="openModal(this.src)">
+            <img src="ToptanSatisImage/ToptanSatis3.jpeg" alt="Toptan Ürün 3" onclick="openModal(this.src)">
+            <img src="ToptanSatisImage/ToptanSatis4.jpeg" alt="Toptan Ürün 4" onclick="openModal(this.src)">
+            <img src="ToptanSatisImage/ToptanSatis5.jpeg" alt="Toptan Ürün 5" onclick="openModal(this.src)">
+            <img src="ToptanSatisImage/ToptanSatis6.jpeg" alt="Toptan Ürün 6" onclick="openModal(this.src)">
+            <img src="ToptanSatisImage/ToptanSatis7.jpeg" alt="Toptan Ürün 7" onclick="openModal(this.src)">
+            <img src="ToptanSatisImage/ToptanSatis8.jpeg" alt="Toptan Ürün 8" onclick="openModal(this.src)">
+            <img src="ToptanSatisImage/ToptanSatis9.jpeg" alt="Toptan Ürün 9" onclick="openModal(this.src)">
+          </div>
+          <div style="text-align:center; margin-top:1.5rem;">
+            <a href="#iletisim" class="btn-primary">Toptan Fiyat Al</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -266,6 +356,12 @@
   </div>
 </section>
 
+<!-- IMAGE MODAL -->
+<div class="img-modal" id="imgModal" onclick="closeModal()">
+  <span class="img-modal-close" onclick="closeModal()">×</span>
+  <img id="modalImg" src="" alt="Ürün">
+</div>
+
 <!-- WHATSAPP FLOATING BUTTON -->
 <a href="https://wa.me/905393158572" target="_blank" class="whatsapp-btn" title="WhatsApp ile yazın">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28" fill="white">
@@ -299,6 +395,24 @@
 </footer>
 
 <script>
+  function toggleAccordion() {
+    const body = document.getElementById('accordionBody');
+    const arrow = document.getElementById('accordionArrow');
+    body.classList.toggle('open');
+    arrow.classList.toggle('open');
+  }
+
+  function openModal(src) {
+    document.getElementById('modalImg').src = src;
+    document.getElementById('imgModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('imgModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {

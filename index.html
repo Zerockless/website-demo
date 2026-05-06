@@ -250,7 +250,28 @@
     <div class="products-grid">
       <div class="product-card fade-in"><span class="product-emoji">🧣</span><h3>Eşraflar</h3><p>Yüksek kaliteli pamuklu ve ipek eşraflar. Hem erkek hem kadın modelleri mevcuttur.</p></div>
       <div class="product-card fade-in"><span class="product-emoji">👘</span><h3>Hac Elbiseleri</h3><p>İhram kumaşları, kadın hac elbiseleri ve özel günlere uygun çeşitli modeller.</p></div>
-      <div class="product-card fade-in"><span class="product-emoji">📿</span><h3>Zikirmatik & Tesbih</h3><p>Elektronik zikirmatikler ve el yapımı tesbihler. Çeşitli renk ve boncuk seçenekleri.</p></div>
+      <div class="product-card fade-in accordion-card" style="grid-column: 1 / -1; padding: 0; overflow: hidden;">
+        <div class="accordion-header" onclick="toggleAccordion3()">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <span class="product-emoji" style="margin:0;">📿</span>
+            <div style="text-align:left;">
+              <h3 style="margin:0;">Zikirmatik & Tesbih</h3>
+              <p style="font-size:0.82rem; color:var(--text-light); margin:0;">Elektronik zikirmatikler ve el yapımı tesbihler — görmek için tıkla</p>
+            </div>
+          </div>
+          <span class="accordion-arrow" id="accordionArrow3">▼</span>
+        </div>
+        <div class="accordion-body" id="accordionBody3">
+          <div class="toptan-gallery">
+            <img src="tesbihimage/tesbih1.jpeg" alt="Tesbih 1" onclick="openModal(this.src)">
+            <img src="tesbihimage/tesbih2.jpeg" alt="Tesbih 2" onclick="openModal(this.src)">
+            <img src="tesbihimage/tesbih3.jpeg" alt="Tesbih 3" onclick="openModal(this.src)">
+          </div>
+          <div style="text-align:center; margin-top:1.5rem;">
+            <a href="#iletisim" class="btn-primary">Fiyat Al</a>
+          </div>
+        </div>
+      </div>
       <div class="product-card fade-in accordion-card" style="grid-column: 1 / -1; padding: 0; overflow: hidden;">
         <div class="accordion-header" onclick="toggleAccordion2()">
           <div style="display:flex; align-items:center; gap:1rem;">
@@ -283,7 +304,7 @@
       <div class="product-card fade-in"><span class="product-emoji">📖</span><h3>Dini Kitaplar & Dualar</h3><p>Hac ve umre duaları, Kur'an-ı Kerim ve dua kitapçıkları. Farklı boyut seçenekleri.</p></div>
       <div class="product-card fade-in"><span class="product-emoji">🧴</span><h3>Zamzam & Koku</h3><p>Zamzam suyu kapları, Mekke parfümleri ve misvak gibi özel dini ürünler.</p></div>
       <div class="product-card fade-in"><span class="product-emoji">🎁</span><h3>Hac Hediyeleri</h3><p>Hac dönüşü sevdiklerinize götürebileceğiniz özel hediye setleri ve hatıra ürünleri.</p></div>
-      <div class="product-card fade-in"><span class="product-emoji">🧳</span><h3>Hac Çantaları</h3><p>Bel çantaları, sırt çantaları ve hacı özel çantalar. Dayanıklı ve pratik tasarımlar.</p></div>
+
       <div class="product-card fade-in accordion-card" style="grid-column: 1 / -1; padding: 0; overflow: hidden;">
         <div class="accordion-header" onclick="toggleAccordion()">
           <div style="display:flex; align-items:center; gap:1rem;">
@@ -423,6 +444,13 @@
 </footer>
 
 <script>
+  function toggleAccordion3() {
+    const body = document.getElementById('accordionBody3');
+    const arrow = document.getElementById('accordionArrow3');
+    body.classList.toggle('open');
+    arrow.classList.toggle('open');
+  }
+
   function toggleAccordion2() {
     const body = document.getElementById('accordionBody2');
     const arrow = document.getElementById('accordionArrow2');
